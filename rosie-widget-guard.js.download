@@ -1,0 +1,21 @@
+(function(){
+  try {
+    if (!sessionStorage.getItem('rosie-widget-minimized')) {
+      sessionStorage.setItem('rosie-widget-minimized', 'minimized');
+    }
+  } catch (error) {}
+  function tuneRosieWidget() {
+    var widget = document.querySelector('rosie-widget');
+    if (!widget || !widget.shadowRoot || widget.shadowRoot.getElementById('thp-rosie-mobile-style')) return;
+    var style = document.createElement('style');
+    style.id = 'thp-rosie-mobile-style';
+    style.textContent = '@media (max-width: 640px){.widget-container.bottom-right{right:12px!important;bottom:92px!important}.widget-container.bottom-left{left:12px!important;bottom:92px!important}.initial-popup,.form-popup,.form-container,.success-popup,.success-container{max-width:calc(100vw - 24px)!important;max-height:calc(100vh - 150px)!important;overflow:auto!important}.minimized-button{min-width:92px!important;padding-right:14px!important}}@media (min-width: 641px){.initial-popup,.form-popup,.form-container,.success-popup,.success-container{max-height:calc(100vh - 60px)!important;overflow:auto!important}}';
+    widget.shadowRoot.appendChild(style);
+  }
+  var observer = new MutationObserver(tuneRosieWidget);
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener('DOMContentLoaded', tuneRosieWidget);
+  window.addEventListener('load', tuneRosieWidget);
+  setTimeout(tuneRosieWidget, 1000);
+  setTimeout(tuneRosieWidget, 2500);
+})();
