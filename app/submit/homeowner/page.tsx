@@ -149,7 +149,12 @@ export default function HomeownerSubmitPage() {
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, flexWrap: "wrap" }}>
               <a
-                href="https://script.google.com/macros/s/AKfycbyQPLrKiEZ4UmI2Vl7BNL7W1q-NQIn2lRsVA-SrZMJHvHNAAZdUZ5jXPE5CjAhvJdtT/exec"
+                href={`https://script.google.com/macros/s/AKfycbyQPLrKiEZ4UmI2Vl7BNL7W1q-NQIn2lRsVA-SrZMJHvHNAAZdUZ5jXPE5CjAhvJdtT/exec#${new URLSearchParams({
+                  name,
+                  email,
+                  company: company?.name || "",
+                  complaintType: "Homeowner Complaint",
+                }).toString()}`}
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary"
