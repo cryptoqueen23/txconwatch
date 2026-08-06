@@ -147,11 +147,20 @@ export default function HomeownerSubmitPage() {
               Texas Contractor Watch may reply to the email address you provided to request documentation.
             </div>
 
-            <p style={{ marginTop: 28 }}>
-              <Link href="/companies" style={{ color: "var(--steel)" }}>
-                ← Back to Companies
+            <div style={{ marginTop: 24, display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a
+                href="https://script.google.com/macros/s/AKfycbyQPLrKiEZ4UmI2Vl7BNL7W1q-NQIn2lRsVA-SrZMJHvHNAAZdUZ5jXPE5CjAhvJdtT/exec"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary"
+              >
+                Upload Supporting Documents
+              </a>
+
+              <Link href="/companies" className="btn btn-secondary">
+                Back to Companies
               </Link>
-            </p>
+            </div>
           </div>
         </section>
       </main>
