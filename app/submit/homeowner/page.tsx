@@ -74,10 +74,20 @@ export default function HomeownerSubmitPage() {
     setResult(null);
 
     try {
+      const companyCity =
+        company.mode === "new" && company.city
+          ? company.city
+          : "Not provided";
+
+      const companyZip =
+        company.mode === "new" && company.zip
+          ? company.zip
+          : "Not provided";
+
       const templateParams = {
         company_name: company.name || "Not provided",
-        company_city: company.city || "Not provided",
-        company_zip: company.zip || "Not provided",
+        company_city: companyCity,
+        company_zip: companyZip,
 
         from_name: name,
         email,
@@ -108,7 +118,7 @@ export default function HomeownerSubmitPage() {
         msg: "Your complaint was sent privately to Texas Contractor Watch for review.",
       });
     } catch (error) {
-      console.error("EmailJS submission failed:", error);
+      console.error("EmailJS homeowner submission failed:", error);
       setResult({
         ok: false,
         msg: "Your complaint could not be sent. Please check your connection and try again.",
@@ -180,6 +190,7 @@ export default function HomeownerSubmitPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Jane Rivera"
+                autoComplete="name"
               />
             </div>
 
